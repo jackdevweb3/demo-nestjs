@@ -36,7 +36,7 @@ export class AuthController {
     if (!payload.account) {
       return BaseResponse.fail("no account");
     }
-  
+
     const result = await this.service.login(payload);
     return BaseResponse.success(result);
   }
@@ -45,6 +45,7 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   public async me() {
     const user = this.user.get();
+    const userInfo = await this.service.queryMe(user.account)
     return BaseResponse.success({
       account: user.account,
       extraInfo: user.extraInfo,

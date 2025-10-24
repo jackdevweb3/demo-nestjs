@@ -11,6 +11,7 @@ import { JWTAuthService } from '../base/auth/jwt-auth.service';
 @Injectable()
 export class AuthService {
 
+
   private logger: SimpleLogger;
   constructor(
     @InjectLogger() private readonly iLogger: ILogger,
@@ -32,6 +33,14 @@ export class AuthService {
     }
 
     return null;
+  }
+
+  async queryMe(account: string) {
+    return await this.prisma.userProfile.findFirst({
+      where: {
+        email: account
+      }
+    });
   }
 
 }

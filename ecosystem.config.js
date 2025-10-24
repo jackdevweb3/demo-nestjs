@@ -32,14 +32,7 @@ module.exports = {
         SENTINEL_NAME: 'myredismaster',
         SENTINEL_REDIS_PWD: 'xxxx',
         SENTINEL_REDIS_DB: 1,
-
-        ENABLE_KAFKA_PRODUCER: 'false',
-        ENABLE_KAFKA_CONSUMER: 'false',
-        KAFKA_BROKERS: 'localhost:9092',
-        KAFKA_CLIENT_ID: 'demo-service-client',
-        KAFKA_GROUP_ID: 'demo-service-group',
-
-        ENABLE_SW: false, 
+ 
 
         IS_DEVMODE : true         
       },

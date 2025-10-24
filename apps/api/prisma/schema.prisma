@@ -20,6 +20,5 @@ model UserProfile {
   updatedAt DateTime @default(dbgenerated("timezone('utc', now())")) @updatedAt
 
   @@unique([email])
-  @@unique([walletAddress]) 
+  @@unique([walletAddress])
 }
- 
