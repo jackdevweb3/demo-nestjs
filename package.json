@@ -1,0 +1,33 @@
+{
+  "name": "demo-service",
+  "private": true,
+  "scripts": {
+    "build": "./build.sh",
+    "db:migrate": "dotenv -- cd apps/api && prisma migrate deploy",
+    "db:migrate-dev": "dotenv -- cd apps/api && prisma migrate dev",
+    "db:reset": "dotenv -- turbo run db:reset", 
+    "predev": "yarn generate", 
+    "dev": "dotenv -- turbo run dev --parallel",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "generate": "dotenv -- turbo run generate",
+    "lint": "turbo run lint",
+    "prestart": "yarn generate",
+    "start": "dotenv -- turbo run start --parallel"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^7.3.0",
+    "prettier": "^3.1.1",
+    "prisma": "^5.8.1",
+    "tsx": "^4.7.0",
+    "eslint": "^8.56.0",
+    "turbo": "^1.11.3"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "yarn@1.22.21",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}

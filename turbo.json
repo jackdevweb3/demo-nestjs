@@ -1,0 +1,40 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [
+    "**/.env.*local",
+    "PORT",
+    "PORT_API"
+  ],
+  "globalEnv": [
+    "PORT",
+    "PORT_API",
+    "IS_TESTNET",
+    "ORIGIN",
+    "IS_TESTNET",
+    "REACT_APP_BUILD_TIMESTAMP"
+  ],
+  "pipeline": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**"
+      ]
+    },
+    "lint": {
+      "dependsOn": [
+        "^lint"
+      ]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "db:reset": {
+      "cache": false
+    },
+    "generate": {}
+  }
+}

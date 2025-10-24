@@ -1,0 +1,25 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+  binaryTargets   = ["native", "debian-openssl-1.0.x", "debian-openssl-1.1.x"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [pgcrypto]
+}
+
+// 只是用于测试, UserProfile 用于存储用户的个人信息
+model UserProfile {
+  id            BigInt  @id
+  walletAddress String // 用户钱包地址 
+  email         String?
+
+  createdAt DateTime @default(dbgenerated("timezone('utc', now())"))
+  updatedAt DateTime @default(dbgenerated("timezone('utc', now())")) @updatedAt
+
+  @@unique([email])
+  @@unique([walletAddress]) 
+}
+ 
