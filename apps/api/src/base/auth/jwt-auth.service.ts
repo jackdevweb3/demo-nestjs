@@ -66,19 +66,19 @@ export class JWTAuthService {
 
         if (request && request.headers && request.headers.authorization) {
             jwt = request.headers.authorization.replace('Bearer', '').trim();
-        } else if (request && request.cookies && request.cookies[constant.LocalStorageKeys.token]) {
+        } else if (request && request.cookies && request.cookies[constant.StorageKeys.token]) {
             // handle cookie based jwt for temporary use
-            jwt = request.cookies[constant.LocalStorageKeys.token].trim();
+            jwt = request.cookies[constant.StorageKeys.token].trim();
         } else if (
             request &&
             request.cookies &&
-            request.cookies[constant.LocalStorageKeys.token]
+            request.cookies[constant.StorageKeys.token]
         ) {
             // handle cookie based jwt for temporary use
-            jwt = request.cookies[constant.LocalStorageKeys.token].trim();
-        } else if (request && request.cookies && request.cookies[constant.LocalStorageKeys.token]) {
+            jwt = request.cookies[constant.StorageKeys.token].trim();
+        } else if (request && request.cookies && request.cookies[constant.StorageKeys.token]) {
             // handle cookie based jwt for temporary use
-            jwt = request.cookies[constant.LocalStorageKeys.token].trim();
+            jwt = request.cookies[constant.StorageKeys.token].trim();
         }
         if (!jwt) {
             this.logger.error('cannot find token info from [token]');
